@@ -44,7 +44,7 @@ int main(int argc, const char * argv[])
   archi2 = fopen(argv[2],"r");
   //NULL in C is ugly, NULL is equal to 0, not like in C++ <3 that is a real null value.
   if (archi == NULL || archi2 == NULL){       
-    printf("%s [!]%s Imposible abrir los archivos pasados como argumentos\n",RED,RES);
+    printf("%s[!]%s Imposible abrir los archivos pasados como argumentos\n",RED,RES);
     exit(0);
   }
 
@@ -67,12 +67,12 @@ int main(int argc, const char * argv[])
   fscanf(archi2,"%i",&cols2);
 
   printf("%s**Dimensiones Matriz**%s",CYN, RES);
-  printf("\n %s[*]%s Matriz **A** Filas:%d Columnas:%d",YEL,RES,rows1,cols1);
-  printf("\n %s[*]%s Matriz **B** Filas:%d Columnas:%d",YEL,RES,rows2,cols2);
+  printf("\n%s[*]%s Matriz **A** Filas:%d Columnas:%d",YEL,RES,rows1,cols1);
+  printf("\n%s[*]%s Matriz **B** Filas:%d Columnas:%d",YEL,RES,rows2,cols2);
   
   if(cols1!=rows2){
-    printf("\n%s [!]%s No Es Posible realizar la Multiplicacion entre Matrices\n ",RED,RES);
-    printf("%s [NOTA:!]%s Dimensiones Incompatibles,saliendo...\n",RED,RES );
+    printf("\n%s[!]%s No Es Posible realizar la Multiplicacion entre Matrices\n ",RED,RES);
+    printf("%s[NOTA:!]%s Dimensiones Incompatibles,saliendo...\n",RED,RES );
     exit(0);
   }
 
@@ -95,7 +95,7 @@ int main(int argc, const char * argv[])
       printf("\n%s[!]%s Falla de Reserva de Memoria",RED,RES);
       exit(ENOMEM);}
   
-  printf("\n %s[*]%s Leyendo Valores de la Matriz A en el archivos\n",YEL, RES);
+  printf("\n%s[*]%s Leyendo Valores de la Matriz A en el archivos\n",YEL, RES);
   while(!feof(archi)){
     for(i=0;i<rows1;i++){
       for(j=0;j<cols1;j++){
@@ -103,7 +103,7 @@ int main(int argc, const char * argv[])
         }
       }
     }
-  printf(" %s[*]%s Leyendo Valores de la Matriz B en el archivos\n",YEL, RES);
+  printf("%s[*]%s Leyendo Valores de la Matriz B en el archivos\n",YEL, RES);
   while(!feof(archi2)){
     for(i=0;i<rows2;i++){
       for(j=0;j<cols2;j++){
@@ -114,9 +114,22 @@ int main(int argc, const char * argv[])
  
   printmat(MatA,rows1,cols1);
   printmat(MatB,rows2,cols2);
+  printf("%s[*]%s Multiplicando Matriz:\n",YEL, RES);
   multimat(MatA,MatB,MatC,rows1,rows2,cols2);
   printmat(MatC,rows1,cols2);
-  
+  result = fopen("r.txt","w");
+  if (result == NULL){       
+    printf("%s [!]%s Imposible abrir el archivo para los resultados\n",RED,RES);
+    exit(0);
+  }
+
+  for(i=0;i<rows2;i++){
+    for(j=0;j<cols2;j++){
+      fprintf(result,"%.2f ",MatB[i][j]);
+    }
+    fprintf(result,"\n");
+  }
+
   //free up memory
   free(*MatA);
   free(*MatB);
@@ -127,10 +140,10 @@ int main(int argc, const char * argv[])
   
   fclose(archi);
   fclose(archi2);
+  fclose(result);
 }
 
-void multimat(float** M,float** M2,float**R,int r1,int r2,int c2)
-{
+void multimat(float** M,float** M2,float**R,int r1,int r2,int c2){
   int tmp=0; 
   for(int i=0;i<r1;i++){
     for(int j=0;j<c2;j++){
@@ -155,7 +168,14 @@ void printmat(float **Mat,int r,int c){
 }
 
 void title(void){
+printf("        :::    ::: :::::::::   :::::::: \n");
+printf("     :+:    :+: :+:    :+: :+:    :+: \n");
+printf("    +:+    +:+ +:+    +:+ +:+         \n");
+printf("   +#++:++#++ +#++:++#+  +#+          \n");
+printf("  +#+    +#+ +#+        +#+           \n");
+printf(" #+#    #+# #+#        #+#    #+#     \n");
+printf("###    ### ###         ########       \n\n");
   printf("%s-----------------------------%s\n",BLU,RES);
   printf("%sMultiplicacion de Matrices\nhfjimenez@utp.edu.co,2017-2\n\tH.P.C%s\n",RED,RES);
-  printf("%s-----------------------------\n\n%s",BLU,RES);
+  printf("%s-----------------------------\n%s",BLU,RES);
 }

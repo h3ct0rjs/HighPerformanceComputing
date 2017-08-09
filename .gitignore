@@ -31,3 +31,5 @@
 *.out
 *.app
 */.ipynb_checkpoints
+.ipynb_checkpoints
+

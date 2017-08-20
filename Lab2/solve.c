@@ -154,8 +154,10 @@ int main(int argc, const char * argv[])
 
 void multimat(float** M,float** M2,float**R,int r1,int r2,int c2){
   /*** Do matrix multiply sharing iterations on outer loop ***/
+  
+  #pragma omp parallel shared(M, M2, R, chunk) private(i, j, k, tid)
   printf("Thread %d Iniciando Multiplicacion...\n",tid);
-  #pragma omp parallel private(i,j,k)
+  
   for(int i=0;i<r1;i++){
     for(int j=0;j<c2;j++){
       tmp=0;

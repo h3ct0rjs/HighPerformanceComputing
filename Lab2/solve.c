@@ -79,13 +79,15 @@ int main(int argc, const char * argv[])
   
 
   /*** Initialize matrices with ceros ***/
-  //#pragma omp for schedule (static, chunk) 
   for(i = 0; i < rows1; i++)
       MatA[i] = (float *)calloc(cols1 ,sizeof(float));
+
   for(i = 0; i < rows2; i++)
       MatB[i] = (float *)calloc(cols2, sizeof(float));
+
   for(i = 0; i < rows1; i++)
       MatC[i] = (float *)calloc(cols2, sizeof(float));
+    
   tid = omp_get_thread_num();
   nthreads = omp_get_num_threads();
   printf("\nMultiplicando las matrices con # %d de threads\n",nthreads);
@@ -116,7 +118,6 @@ int main(int argc, const char * argv[])
   //printmat(MatB,rows2,cols2);
   printf("%s[*]%s Multiplicando Matriz:\n",YEL, RES);
   printf("%s[*]%s Numero maximo de Threads: %i \n",YEL, RES, omp_get_max_threads());
-  #pragma omp parallel
   printf("%s[*]%s Numero de Threads: %i \n",YEL, RES, omp_get_num_threads());
   c_1=time(NULL);                     // time measure: start mm 
     multimat(MatA,MatB,MatC,rows1,rows2,cols2);
@@ -155,9 +156,11 @@ int main(int argc, const char * argv[])
 void multimat(float** M,float** M2,float**R,int r1,int r2,int c2){
   /*** Do matrix multiply sharing iterations on outer loop ***/
   
-  #pragma omp parallel shared(M, M2, R, chunk) private(i, j, k, tid)
+  #pragma omp parallel shared(M, M2, R, chunk) private(i, j, k, tid,tmp)
+  {
   printf("Thread %d Iniciando Multiplicacion...\n",tid);
   
+  #pragma omp for schedule(static, chunk) 
   for(int i=0;i<r1;i++){
     for(int j=0;j<c2;j++){
       tmp=0;
@@ -166,6 +169,8 @@ void multimat(float** M,float** M2,float**R,int r1,int r2,int c2){
       }
      R[i][j]=tmp;
     } 
+  }
+
   }
 } 
 

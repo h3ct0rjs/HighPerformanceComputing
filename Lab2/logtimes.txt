@@ -1,0 +1,119 @@
+Pruebas Secuenciales :
+[*] Numero maximo de Threads: 1 
+Tiempo de Ejecucion: 110.000s
+---
+[*] Numero maximo de Threads: 1 
+Tiempo de Ejecucion: 110.000s
+real	2m5.229s
+user	1m49.292s
+sys	0m1.240s
+---
+[*] Numero maximo de Threads: 2 
+Tiempo de Ejecucion: 58.000s
+real	1m13.346s
+user	1m49.140s
+sys	0m1.204s
+---
+[*] Numero maximo de Threads: 2 
+Tiempo de Ejecucion: 58.000s
+real	1m13.151s
+user	1m48.544s
+sys	0m1.220s
+--
+[*] Numero maximo de Threads: 2 
+Tiempo de Ejecucion: 58.000s
+real	1m14.044s
+user	1m49.940s
+sys	0m1.144s
+---
+[*] Numero maximo de Threads: 3 
+Tiempo de Ejecucion: 41.000s
+real	0m55.691s
+user	1m48.884s
+sys	0m1.072s
+---
+[*] Numero maximo de Threads: 3 
+Tiempo de Ejecucion: 41.000s
+real	0m55.852s
+user	1m49.068s
+sys	0m1.048s
+---
+[*] Numero maximo de Threads: 3 
+Tiempo de Ejecucion: 41.000s
+real	0m56.106s
+user	1m49.004s
+sys	0m1.156s
+---
+[*] Numero maximo de Threads: 4 
+Tiempo de Ejecucion: 39.000s
+real	0m53.856s
+user	2m5.772s
+sys	0m1.136s
+---
+[*] Numero maximo de Threads: 4 
+Tiempo de Ejecucion: 39.000s
+real	0m54.293s
+user	2m4.704s
+sys	0m1.204s
+---
+[*] Numero maximo de Threads: 4 
+Tiempo de Ejecucion: 38.000s
+real	0m52.839s
+user	2m5.840s
+sys	0m1.108s
+---
+5:::
+[*] Numero maximo de Threads: 5 
+Tiempo de Ejecucion: 33.000s
+real	0m48.357s
+user	2m19.516s
+sys	0m1.176s
+---
+[*] Numero maximo de Threads: 5 
+Tiempo de Ejecucion: 34.000s
+real	0m48.709s
+user	2m19.716s
+sys	0m1.192s
+---
+[*] Numero maximo de Threads: 5 
+Tiempo de Ejecucion: 33.000s
+real	0m48.600s
+user	2m19.388s
+sys	0m1.336s
+---
+7:::
+[*] Numero maximo de Threads: 7 
+Tiempo de Ejecucion: 27.000s
+real	0m42.461s
+user	2m27.884s
+sys	0m1.168s
+---
+[*] Numero maximo de Threads: 7 
+Tiempo de Ejecucion: 28.000s
+real	0m42.842s
+user	2m29.472s
+sys	0m1.172s
+---
+[*] Numero maximo de Threads: 7 
+Tiempo de Ejecucion: 28.000s
+real	0m43.329s
+user	2m30.128s
+sys	0m1.136s
+---
+[*] Numero maximo de Threads: 8 
+Tiempo de Ejecucion: 29.000s
+real	0m43.891s
+user	2m34.372s
+sys	0m1.208s
+---
+[*] Numero maximo de Threads: 8 
+Tiempo de Ejecucion: 29.000s
+real	0m43.891s
+user	2m34.372s
+sys	0m1.208s
+---
+[*] Numero maximo de Threads: 8 
+Tiempo de Ejecucion: 28.000s
+real	0m43.487s
+user	2m33.632s
+sys	0m1.216s

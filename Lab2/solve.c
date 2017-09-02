@@ -76,11 +76,14 @@ int main(int argc, const char * argv[])
   float **MatA = (float **)calloc(rows1,sizeof(float*));
   float **MatB = (float **)calloc(rows2, sizeof(float*));
   float **MatC = (float **)calloc(rows1, sizeof(float*));
-  
+  //double **M = (double **)malloc(rows1*sizeof(double*));
 
+
+  
   /*** Initialize matrices with ceros ***/
   for(i = 0; i < rows1; i++)
       MatA[i] = (float *)calloc(cols1 ,sizeof(float));
+
 
   for(i = 0; i < rows2; i++)
       MatB[i] = (float *)calloc(cols2, sizeof(float));

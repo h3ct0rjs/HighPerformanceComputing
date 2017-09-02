@@ -149,7 +149,7 @@ void multimat(float** M,float** M2,float**R,int r1,int r2,int c2){
     for(int j=0;j<c2;j++){
       tmp=0;
       for(int k=0;k<r2;k++){
-        tmp=tmp+M[i][k]*M2[k][j];
+        tmp+=M[i][k]*M2[k][j];
       }
      R[i][j]=tmp;
     } 

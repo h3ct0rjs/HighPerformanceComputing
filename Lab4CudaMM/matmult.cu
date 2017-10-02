@@ -16,24 +16,12 @@ __global__ void Matriz_GPU_Mult(int *a, int *b, int *c) {
 
 int main() {
   double timeGPU;
-  int A[N][N], B[N][N], C[N][N];
+  int h_A[N][N], h_B[N][N], h_C[N][N];
   int *d_a, *d_b, *d_c;
-  int cont,i,j;
-
-  //inicializacion
-	for (i = 0; i < N; i++) {
-  	cont = 0;
-  	for (j = 0; j < N; j++) {
-   		A[i][j] = cont;
-   		B[i][j] = cont;
-   		cont++;
-  	}
-  }
-
-  int size = N * N * sizeof(int);
-  cudaMalloc((void **) &d_a, size);
-  cudaMalloc((void **) &d_b, size);
-  cudaMalloc((void **) &d_c, size);
+  
+  cudaMalloc((void **) &d_a, N*sizeof(int));
+  cudaMalloc((void **) &d_b, N*sizeof(int));
+  cudaMalloc((void **) &d_c, N*sizeof(int));
 
   cudaMemcpy(d_a, A, size, cudaMemcpyHostToDevice);
   cudaMemcpy(d_b, B, size, cudaMemcpyHostToDevice);
@@ -45,7 +33,6 @@ int main() {
   clock_t startGPU  = clock();
   Matriz_GPU_Mult<<<numBlocks, threadsPerBlock>>>(d_a, d_b, d_c);
 	timeGPU = ((double)(clock() - startGPU))/CLOCKS_PER_SEC;
-  
   cudaMemcpy(C, d_c, size, cudaMemcpyDeviceToHost);
   cudaFree(d_a);
   cudaFree(d_b);
